@@ -211,15 +211,14 @@ namespace OLED {
         const fontIndex = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ',', '?', '.', '!', '<', '>', '/', ':', '*', '-', '+', '=']
 
         function getChar(char: string): number[][] {
+            console.log(char)
             let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
-                console.logValue(char, "a")
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             } else if (fontIndex.indexOf(char) != -1) {
-                console.logValue(char, "b")
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
