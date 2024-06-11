@@ -1,10 +1,9 @@
 {
     "name": "pxt-oled-dev",
-    "description": "",
+    "description": "Extension for controlling OLED display",
     "dependencies": {
         "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "imageio": "github:Pythom1234/pxt-imageio"
     },
     "files": [
         "main.ts",
