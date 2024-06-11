@@ -3,8 +3,8 @@
 namespace OLED {
     const ADDR = 0x3C
     let screen = pins.createBuffer(1025)
-    let charset: string[] = []
-    let charsetIndex: string[] = []
+    export let charset: string[] = []
+    export let charsetIndex: string[] = []
 
     // From microbit/micropython Chinese community
     function cmd1(cmd1: number): void {
