@@ -223,13 +223,13 @@ namespace OLED {
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             }
-            console.log(out.join(":"))
             return out
         }
 
         let iteration = 0
         for (const letter of text) {
             for (const pos of getChar(letter)) {
+                console.logValue(letter, pos.join(':'))
                 if (toggle) {
                     togglePx(x + pos[0] + (iteration * 8), y + pos[1])
                 } else {
