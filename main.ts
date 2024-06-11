@@ -226,7 +226,8 @@ namespace OLED {
             }
             return out
         }
-
+        
+        console.log(text)
         let iteration = 0
         for (const letter of text) {
             for (const pos of getChar(letter)) {
