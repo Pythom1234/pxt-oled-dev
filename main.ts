@@ -343,13 +343,13 @@ namespace OLED {
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
-    //% image.defl=`. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n`
-    export function addChar(char: string, image: string): void {
-        const realImage = <Image><any>image
+    //% leds.defl=`. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n`
+    export function addChar(char: string, leds: string): void {
+        const image = <Image><any>leds
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
-                if (realImage.pixel(x,y)) {
+                if (image.pixel(x,y)) {
                     if (!(compressedChar == "")) {
                         compressedChar += " "
                     }
