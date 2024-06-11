@@ -213,7 +213,7 @@ namespace OLED {
         function getChar(char: string): number[][] {
             let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
-                console.log(charset[charsetIndex.indexOf(char)])
+                console.log(charsetIndex.indexOf(char))
                 /*
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
