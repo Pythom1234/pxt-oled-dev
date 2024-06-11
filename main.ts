@@ -131,6 +131,7 @@ namespace OLED {
     //% toggle.defl=false
     //% weight=94
     export function drawText(text: string, x: number, y: number, color: boolean, toggle: boolean): void {
+        serial.writeLine("sdafdsfsdf")
         const font = [
             "2,0 3,0 1,1 4,1 0,2 5,2 0,3 5,3 0,4 1,4 2,4 3,4 4,4 5,4 0,5 5,5 0,6 5,6 0,7 5,7",
             "0,0 1,0 2,0 3,0 4,0 0,1 5,1 0,2 5,2 0,3 1,3 2,3 3,3 4,3 0,4 5,4 0,5 5,5 0,6 5,6 0,7 1,7 2,7 3,7 4,7",
@@ -211,7 +212,6 @@ namespace OLED {
         const fontIndex = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ',', '?', '.', '!', '<', '>', '/', ':', '*', '-', '+', '=']
 
         function getChar(char: string): number[][] {
-            console.log(char)
             let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
@@ -226,8 +226,7 @@ namespace OLED {
             }
             return out
         }
-        
-        console.log(text)
+
         let iteration = 0
         for (const letter of text) {
             for (const pos of getChar(letter)) {
