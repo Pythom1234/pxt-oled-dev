@@ -3,6 +3,8 @@
 namespace OLED {
     const ADDR = 0x3C
     let screen = pins.createBuffer(1025)
+    let charset: string[] = []
+    let charsetIndex: string[] = []
 
     // From microbit/micropython Chinese community
     function cmd1(cmd1: number): void {
@@ -49,6 +51,15 @@ namespace OLED {
     function getbit(bits: number, shift: number): number {
         return (bits >> shift) & 1;
     }
+    function includes(array: string[], element: string): boolean {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === element) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //% block="init OLED display"
     //% weight=101
     export function init(): void {
@@ -208,11 +219,18 @@ namespace OLED {
 
         const fontIndex = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ',', '?', '.', '!', '<', '>', '/', ':', '*', '-', '+', '=']
 
-        function getFont(index: number): Array<Array<number>> {
+        function getChar(char: string): Array<Array<number>> {
             let out: Array<Array<number>> = []
-            for (const tuple of font[index].split(' ')) {
-                const add = tuple.split(',')
-                out.push([parseInt(add[0]), parseInt(add[1])])
+            if (includes(charsetIndex, char)) {
+                for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
+                    const add = tuple.split(',')
+                    out.push([parseInt(add[0]), parseInt(add[1])])
+                }
+            } else if (includes(fontIndex, char)) {
+                for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
+                    const add = tuple.split(',')
+                    out.push([parseInt(add[0]), parseInt(add[1])])
+                }
             }
             return out
         }
@@ -220,7 +238,7 @@ namespace OLED {
         let iteration = 0
         for (const letter of text) {
             if (fontIndex.some(l => l === letter)) {
-                for (const pos of getFont(fontIndex.indexOf(letter))) {
+                for (const pos of getChar(letter)) {
                     if (toggle) {
                         togglePx(x + pos[0] + (iteration * 8), y + pos[1])
                     } else {
@@ -325,6 +343,20 @@ namespace OLED {
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
-    //% image.defl=". . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n"
-    export function addChar(char: string, image: string): void {}
+    //% image.defl=`. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n`
+    export function addChar(char: string, image: string): void {
+        const realImage = <Image><any>image
+        let compressedChar = ""
+        for (let x = 0; x < 8; x++) {
+            for (let y = 0; y < 10; y++) {
+                if (realImage.pixel(x,y)) {
+                    if (!(compressedChar == "")) {
+                        compressedChar += " "
+                    }
+                    compressedChar += x.toString() + "," + y.toString()
+                }
+            }
+        }
+        charsetIndex.push(char)
+    }
 }
