@@ -223,6 +223,7 @@ namespace OLED {
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             }
+            console.log(out.join(":"))
             return out
         }
 
