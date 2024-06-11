@@ -344,7 +344,7 @@ namespace OLED {
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
     //% leds.defl=`. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n`
-    export function addChar(char: string, leds: string): void {
+    export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
