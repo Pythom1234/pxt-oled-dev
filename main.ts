@@ -56,7 +56,6 @@ namespace OLED {
     //% weight=101
     export function init(): void {
         screen = pins.createBuffer(1025)
-        console.log(screen)
         cmd1(0xAE)
         cmd1(0xA4)
         cmd2(0xD5, 0xF0)
@@ -213,17 +212,21 @@ namespace OLED {
 
         function getChar(char: string): Array<Array<number>> {
             let out: number[][] = []
+            console.log("DEBUG ch.1")
             if (charsetIndex.indexOf(char) != -1) {
+                console.log("DEBUG ch.2.1")
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             } else if (fontIndex.indexOf(char) != -1) {
+                console.log("DEBUG ch.2.2")
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             }
+            console.log("DEBUG ch.3")
             return out
         }
 
