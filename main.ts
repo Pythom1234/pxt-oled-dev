@@ -213,8 +213,8 @@ namespace OLED {
 
         function getChar(char: string): Array<Array<number>> {
             let out: Array<Array<number>> = []
-            console.logValue("charset",charset)
-            console.logValue("index",charsetIndex)
+            console.logValue("charset", charset)
+            console.logValue("index", charsetIndex)
             if (charsetIndex.indexOf(char) != -1) {
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
@@ -231,16 +231,14 @@ namespace OLED {
 
         let iteration = 0
         for (const letter of text) {
-            if (fontIndex.some(l => l === letter)) {
-                for (const pos of getChar(letter)) {
-                    if (toggle) {
-                        togglePx(x + pos[0] + (iteration * 8), y + pos[1])
-                    } else {
-                        setPx(x + pos[0] + (iteration * 8), y + pos[1], color)
-                    }
+            for (const pos of getChar(letter)) {
+                if (toggle) {
+                    togglePx(x + pos[0] + (iteration * 8), y + pos[1])
+                } else {
+                    setPx(x + pos[0] + (iteration * 8), y + pos[1], color)
                 }
-                iteration++
             }
+            iteration++
         }
     }
     //% block="draw rect at|x1 $x1|y1 $y1|x2 $x2|y2 $y2|color $color|fill $fill|toggle $toggle"
@@ -343,7 +341,7 @@ namespace OLED {
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
-                if (image.pixel(x,y)) {
+                if (image.pixel(x, y)) {
                     if (!(compressedChar == "")) {
                         compressedChar += " "
                     }
