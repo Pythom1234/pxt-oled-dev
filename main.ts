@@ -321,4 +321,10 @@ namespace OLED {
             }
         }
     }
+    //% block="add character $char"
+    //% imageLiteral=1
+    //% imageLiteralRows=10
+    //% imageLiteralColumns=8
+    //% image.defl=". . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n"
+    export function addChar(char: string, image: string): void {}
 }
