@@ -329,7 +329,7 @@ namespace OLED {
             }
         }
     }
-    //% block="add character $char"
+    //% block="add character $leds $char"
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
