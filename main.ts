@@ -221,6 +221,8 @@ namespace OLED {
 
         function getChar(char: string): Array<Array<number>> {
             let out: Array<Array<number>> = []
+            console.log(charset)
+            console.log(charsetIndex)
             if (includes(charsetIndex, char)) {
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
