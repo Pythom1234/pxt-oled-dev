@@ -3,8 +3,8 @@
 namespace OLED {
     const ADDR = 0x3C
     let screen = pins.createBuffer(1025)
-    export let charset: string[] = []
-    export let charsetIndex: string[] = []
+    let charset: string[] = []
+    let charsetIndex: string[] = []
 
     // From microbit/micropython Chinese community
     function cmd1(cmd1: number): void {
@@ -213,11 +213,12 @@ namespace OLED {
         function getChar(char: string): number[][] {
             let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
-                console.log(charset)
+                console.log(charset[charsetIndex.indexOf(char)])
+                /*
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
-                }
+                }*/
             } else if (fontIndex.indexOf(char) != -1) {
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
