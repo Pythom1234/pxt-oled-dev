@@ -212,21 +212,22 @@ namespace OLED {
 
         function getChar(char: string): Array<Array<number>> {
             let out: number[][] = []
-            console.log("DEBUG ch.1")
             if (charsetIndex.indexOf(char) != -1) {
-                console.log("DEBUG ch.2.1")
+                console.log("DEBUG 1")
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
+                    console.log("DEBUG 2")
                     const add = tuple.split(',')
+                    console.log("DEBUG 3")
                     out.push([parseInt(add[0]), parseInt(add[1])])
+                    console.log("DEBUG 4")
                 }
+                console.log("DEBUG 5")
             } else if (fontIndex.indexOf(char) != -1) {
-                console.log("DEBUG ch.2.2")
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             }
-            console.log("DEBUG ch.3")
             return out
         }
 
