@@ -51,14 +51,6 @@ namespace OLED {
     function getbit(bits: number, shift: number): number {
         return (bits >> shift) & 1;
     }
-    function includes(array: string[], element: string): boolean {
-        for (let i = 0; i < array.length; i++) {
-            if (array[i] == element) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     //% block="init OLED display"
     //% weight=101
@@ -223,12 +215,12 @@ namespace OLED {
             let out: Array<Array<number>> = []
             console.logValue("charset",charset)
             console.logValue("index",charsetIndex)
-            if (includes(charsetIndex, char)) {
+            if (charsetIndex.indexOf(char) != -1) {
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
-            } else if (includes(fontIndex, char)) {
+            } else if (fontIndex.indexOf(char) != -1) {
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
