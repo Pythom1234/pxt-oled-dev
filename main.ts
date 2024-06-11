@@ -212,9 +212,7 @@ namespace OLED {
         const fontIndex = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ',', '?', '.', '!', '<', '>', '/', ':', '*', '-', '+', '=']
 
         function getChar(char: string): Array<Array<number>> {
-            let out: Array<Array<number>> = []
-            console.logValue("charset", charset)
-            console.logValue("index", charsetIndex)
+            let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
@@ -335,7 +333,7 @@ namespace OLED {
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
-    //% leds.defl=`. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n`
+    //% leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
         let compressedChar = ""
