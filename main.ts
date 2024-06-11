@@ -213,11 +213,13 @@ namespace OLED {
         function getChar(char: string): number[][] {
             let out: number[][] = []
             if (charsetIndex.indexOf(char) != -1) {
+                console.logValue(char, "a")
                 for (const tuple of charset[charsetIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
                 }
             } else if (fontIndex.indexOf(char) != -1) {
+                console.logValue(char, "b")
                 for (const tuple of font[fontIndex.indexOf(char)].split(' ')) {
                     const add = tuple.split(',')
                     out.push([parseInt(add[0]), parseInt(add[1])])
