@@ -271,7 +271,8 @@ namespace OLED {
     // leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
         console.log("asd")
-        /*const image = <Image><any>leds
+        const image = <Image><any>leds
+        /*
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
