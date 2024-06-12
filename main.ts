@@ -1,5 +1,5 @@
 
-//% icon="DEV" color=#0000ff
+//% icon="D" color=#0000ff
 namespace OLED {
     const ADDR = 0x3C
     let screen = pins.createBuffer(1025)
@@ -332,9 +332,10 @@ namespace OLED {
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
-    //% leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
+    // leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
+        drawImage(image,5,5,true,false,false)
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
