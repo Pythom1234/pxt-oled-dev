@@ -332,6 +332,7 @@ namespace OLED {
     //% imageLiteral=1
     //% imageLiteralRows=10
     //% imageLiteralColumns=8
+    //% shim=images::createImage
     // leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
