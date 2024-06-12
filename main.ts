@@ -335,7 +335,7 @@ namespace OLED {
     // leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
-        drawImage(image,5,5,true,false,false)
+        drawImage(images.createImage(leds),5,5,true,false,false)
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
