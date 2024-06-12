@@ -353,7 +353,7 @@ namespace OLED {
     //% advanced=true
     //% weight=89
     //% shim=images::createImage
-    //% imageLiteral=1 imageLiteralRows=8 imageLiteralColumns=10
+    //% imageLiteral=1 imageLiteralRows=10 imageLiteralColumns=8
     export function charImage(leds: string): Image {
         return <Image><any>leds
     }
