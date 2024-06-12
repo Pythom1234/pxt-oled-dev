@@ -328,27 +328,33 @@ namespace OLED {
             }
         }
     }
-    const DEFL_FONT_IMAGE = images.createImage(`
-. . . . .
-. . . . .
-. . # . .
-. . . . .
-. . . . .
-`)
-    //% block="add character $char $image=DEFL_FONT_IMAGE"
+    //% block="add character $char $image"
+    //% advanced=true
+    //% weight=90
     export function addChar(image: Image, char: string): void {
-        let compressedChar = ""
-        for (let x = 0; x < 8; x++) {
-            for (let y = 0; y < 10; y++) {
-                if (image.pixel(x, y)) {
-                    if (!(compressedChar == "")) {
-                        compressedChar += " "
+        if (char != "" && image != null && image != undefined) {
+            char = char[0]
+            let compressedChar = ""
+            for (let x = 0; x < 8; x++) {
+                for (let y = 0; y < 10; y++) {
+                    if (image.pixel(x, y)) {
+                        if (!(compressedChar == "")) {
+                            compressedChar += " "
+                        }
+                        compressedChar += x.toString() + "," + y.toString()
                     }
-                    compressedChar += x.toString() + "," + y.toString()
                 }
             }
+            charset.push(compressedChar)
+            charsetIndex.push(char)
         }
-        charset.push(compressedChar)
-        charsetIndex.push(char)
+    }
+    //% block="char image"
+    //% advanced=true
+    //% weight=89
+    //% shim=images::createImage
+    //% imageLiteral=1 imageLiteralRows=8 imageLiteralColumns=10
+    export function charImage(leds: string): Image {
+        return <Image><any>leds
     }
 }
