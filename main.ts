@@ -328,7 +328,14 @@ namespace OLED {
             }
         }
     }
-    //% block="add character $char $image=images.createImage(`. . . # . . . #`)"
+    const DEFL_FONT_IMAGE = images.createImage(`
+. . . . .
+. . . . .
+. . # . .
+. . . . .
+. . . . .
+`)
+    //% block="add character $char $image=DEFL_FONT_IMAGE"
     export function addChar(image: Image, char: string): void {
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
