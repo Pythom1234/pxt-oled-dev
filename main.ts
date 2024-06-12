@@ -1,5 +1,5 @@
 
-//% icon="DEV" color=#0000ff
+//% icon="D" color=#0000ff
 namespace OLED {
     const ADDR = 0x3C
     let screen = pins.createBuffer(1025)
@@ -270,6 +270,7 @@ namespace OLED {
     //% imageLiteralColumns=8
     //% leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
+        console.log("DEBUG 1")
         const image = <Image><any>leds
         let compressedChar = ""
         console.log("->" + compressedChar + "<-")
