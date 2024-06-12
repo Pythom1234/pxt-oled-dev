@@ -274,13 +274,14 @@ namespace OLED {
         const image = <Image><any>leds
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
-            for (let y = 0; y < 10; y++) {/*
-                if (image.pixel(x, y)) {
+            for (let y = 0; y < 10; y++) {
+                if (image.pixel(x, y)) {/*
                     if (!(compressedChar == "")) {
                         compressedChar += " "
                     }
                     compressedChar += x.toString() + "," + y.toString()
-                }*/
+                    */
+                }
             }
         }
         charset.push(compressedChar)
