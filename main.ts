@@ -270,8 +270,8 @@ namespace OLED {
     //% imageLiteralColumns=8
     // leds.defl=. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n. . . . . . . .\n
     export function addChar(leds: string, char: string): void {
-        console.log("1")
-        const image = <Image><any>leds
+        console.log("asd")
+        /*const image = <Image><any>leds
         let compressedChar = ""
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
@@ -284,6 +284,6 @@ namespace OLED {
             }
         }
         charset.push(compressedChar)
-        charsetIndex.push(char)
+        charsetIndex.push(char)*/
     }
 }
