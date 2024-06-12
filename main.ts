@@ -272,6 +272,8 @@ namespace OLED {
     export function addChar(leds: string, char: string): void {
         const image = <Image><any>leds
         let compressedChar = ""
+        console.log("->" + compressedChar + "<-")
+        console.log("->" + image + "<-")
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 10; y++) {
                 if (image.pixel(x, y)) {
@@ -279,7 +281,6 @@ namespace OLED {
                         compressedChar += " "
                     }
                     compressedChar += x.toString() + "," + y.toString()
-                    console.log(x + " --- " + y + " --- " + compressedChar)
                 }
             }
         }
