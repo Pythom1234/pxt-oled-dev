@@ -78,14 +78,6 @@ namespace OLED {
         clear(false)
         draw()
     }
-    //% block="set contrast $contrast"
-    //% contrast.defl=255
-    //% contrast.min=0
-    //% contrast.max=255
-    //% weight=100
-    export function setContrast(contrast: number): void {
-        cmd2(0x81, contrast)
-    }
     //% block="clear $color"
     //% color.defl=false
     //% weight=99
@@ -268,62 +260,6 @@ namespace OLED {
                     togglePx(x1, y)
                 } else {
                     setPx(x1, y, color)
-                }
-            }
-        }
-    }
-    //% block="draw line from|x $x1|y $y1|to|x $x2|y $y2|color $color|toggle $toggle"
-    //% color.defl=true
-    //% toggle.defl=false
-    //% weight=92
-    export function drawLine(x1: number, y1: number, x2: number, y2: number, color: boolean, toggle: boolean): void {
-        const line = []
-        const dx = Math.abs(x2 - x1)
-        const dy = Math.abs(y2 - y1)
-        const sx = x1 < x2 ? 1 : -1
-        const sy = y1 < y2 ? 1 : -1
-        let err = dx - dy
-        while (true) {
-            line.push([x1, y1])
-            if (x1 === x2 && y1 === y2) {
-                break
-            }
-            const e2 = 2 * err;
-            if (e2 > -dy) {
-                err -= dy
-                x1 += sx
-            }
-            if (e2 < dx) {
-                err += dx
-                y1 += sy
-            }
-        }
-        for (const pixel of line) {
-            if (toggle) {
-                togglePx(pixel[0], pixel[1])
-            } else {
-                setPx(pixel[0], pixel[1], color)
-            }
-        }
-    }
-    //% block="show image|$image|x $x|y $y|color $color|background $bg|toggle $toggle"
-    //% color.defl=true
-    //% bg.defl=false
-    //% toggle.defl=false
-    //% weight=91
-    export function drawImage(image: Image, x: number, y: number, color: boolean, bg: boolean, toggle: boolean): void {
-        for (let img_x = 0; img_x < image.width(); img_x++) {
-            for (let img_y = 0; img_y < image.height(); img_y++) {
-                let c = image.pixel(img_x, img_y)
-                if ((bg && !c) || (c)) {
-                    if (!color) {
-                        c = !c
-                    }
-                    if (toggle) {
-                        togglePx(x + img_x, y + img_y)
-                    } else {
-                        setPx(x + img_x, y + img_y, c)
-                    }
                 }
             }
         }
