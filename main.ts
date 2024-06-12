@@ -279,6 +279,7 @@ namespace OLED {
                         compressedChar += " "
                     }
                     compressedChar += x.toString() + "," + y.toString()
+                    console.log(x + " --- " + y + " --- " + compressedChar)
                 }
             }
         }
